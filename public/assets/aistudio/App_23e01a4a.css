@@ -1,0 +1,161 @@
+/* Shared authentication shell */
+.ish-auth-page { min-height: 100vh; background: var(--ish-beige); }
+.ish-auth-layout { min-height: 100vh; display: grid; grid-template-columns: minmax(330px, 42%) minmax(0, 1fr); grid-template-rows: minmax(100vh, auto); }
+.ish-auth-brand { position: relative; isolation: isolate; overflow: hidden; min-height: 100vh; padding: clamp(2rem, 5vw, 4.75rem); display: flex; flex-direction: column; justify-content: space-between; color: var(--ish-white); background: var(--ish-blue); }
+.ish-brand-logo { position: relative; z-index: 1; font: 800 1.8rem/1 var(--ish-font-display), sans-serif; letter-spacing: -.08em; }
+.ish-brand-message { position: relative; z-index: 1; min-width: 0; max-width: 470px; margin: auto 0; padding: 4rem 0; }
+.ish-brand-message h1 { max-width: 100%; margin: 0 0 1.35rem; overflow-wrap: anywhere; font: 800 clamp(2.5rem, 4vw, 4rem)/1.1 var(--ish-font-display), sans-serif; letter-spacing: -.055em; }
+.ish-brand-message p { max-width: 385px; margin: 0; color: rgba(255,255,255,.87); font-size: clamp(1rem, 1.35vw, 1.15rem); line-height: 1.7; }
+.ish-brand-decoration { position: absolute; z-index: -1; right: -3rem; bottom: -3rem; width: clamp(220px, 18vw, 250px); aspect-ratio: 1; border-radius: 50%; background: var(--ish-teal); opacity: .95; }
+.ish-brand-decoration span { position: absolute; top: 16%; left: 16%; width: 68%; aspect-ratio: 1; border-radius: 50%; background: var(--ish-yellow); }
+.ish-auth-main { width: 100%; min-width: 0; min-height: 100vh; padding: clamp(1.5rem, 5vw, 4rem); display: flex; align-items: center; justify-content: center; background: var(--ish-beige); }
+.ish-auth-card { width: min(100%, 475px); min-width: 0; padding: clamp(1.75rem, 3vw, 2.75rem); border: 1px solid rgba(255,255,255,.82); border-radius: var(--ish-radius-card); background: var(--ish-white); box-shadow: var(--ish-shadow-card); }
+.ish-login-card { width: min(100%, 455px); }
+.ish-simple-auth-card { width: min(100%, 470px); }
+.ish-signup-layout { grid-template-columns: minmax(330px, 42%) minmax(0,1fr); }
+.ish-signup-main { align-items: center; }
+.ish-signup-card { width: min(100%, 510px); padding: clamp(1.5rem, 2.6vw, 2.35rem); }
+.ish-card-heading { margin-bottom: 1.55rem; }
+.ish-card-heading h2 { margin: 0 0 .55rem; color: var(--ish-ink); font: 800 clamp(1.65rem, 2.5vw, 2rem)/1.2 var(--ish-font-display), sans-serif; letter-spacing: -.045em; }
+.ish-card-heading p { margin: 0; color: var(--ish-muted); font-size: .97rem; line-height: 1.55; }
+.ish-auth-form, .ish-simple-auth-form { display: grid; gap: 1.15rem; }
+.ish-signup-form { gap: 1.05rem; }
+.ish-signup-form .ish-form-field { row-gap: .55rem; }
+.ish-form-field { min-width: 0; display: grid; gap: .45rem; }
+.ish-form-field label { color: #344c59; font-size: .88rem; font-weight: 700; }
+.ish-form-field input { width: 100%; min-width: 0; height: 3.15rem; padding: 0 .95rem; border: 1px solid var(--ish-border); border-radius: var(--ish-radius-sm); color: var(--ish-ink); background: #fff; transition: border-color .18s ease, box-shadow .18s ease; }
+.ish-form-field input::placeholder { color: #9aa6ac; }
+.ish-form-field input:hover { border-color: #aabcc3; }
+.ish-form-field input:focus { border-color: var(--ish-blue); outline: none; box-shadow: var(--ish-focus); }
+.ish-form-field input:disabled { cursor: not-allowed; background: #f5f7f7; }
+.ish-form-field input[aria-invalid="true"] { border-color: var(--ish-danger); }
+.ish-password-field { position: relative; }
+.ish-password-field input { padding-right: 4.6rem; }
+.ish-eye-button { position: absolute; top: 50%; right: .65rem; transform: translateY(-50%); min-width: 3.3rem; min-height: 2.4rem; border: 0; border-radius: .45rem; color: var(--ish-blue-deep); background: transparent; font-size: .82rem; font-weight: 700; cursor: pointer; }
+.ish-eye-button:hover:not(:disabled) { background: var(--ish-blue-soft); }
+.ish-eye-button:disabled { opacity: .55; cursor: not-allowed; }
+.ish-password-requirements { margin: .15rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem 1rem; list-style: none; color: var(--ish-muted); font-size: .76rem; }
+.ish-password-requirements li::before { content: "•"; margin-right: .35rem; color: var(--ish-teal-deep); font-weight: 800; }
+.ish-field-error { color: var(--ish-danger); font-size: .78rem; line-height: 1.4; }
+.ish-auth-form-options { display: flex; justify-content: flex-end; margin-top: -.35rem; font-size: .84rem; font-weight: 700; }
+.ish-auth-form-options a, .ish-signup-existing a { text-decoration: none; }
+.ish-auth-form-options a:hover, .ish-signup-existing a:hover, .ish-auth-bottom-link a:hover { text-decoration: underline; }
+.ish-button, .ish-primary-button { min-height: 3.15rem; padding: .7rem 1.1rem; display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: 0; border-radius: var(--ish-radius-sm); text-align: center; text-decoration: none; font-weight: 700; cursor: pointer; transition: background .18s ease, transform .18s ease, box-shadow .18s ease; }
+.ish-button--primary, .ish-primary-button { width: 100%; color: #fff; background: var(--ish-blue); box-shadow: 0 5px 14px rgba(11,132,180,.16); }
+.ish-button--primary:hover:not(:disabled) { background: var(--ish-blue-deep); transform: translateY(-1px); }
+.ish-button:disabled, .ish-primary-button:disabled { color: #f5f7f7; background: #91a7af; box-shadow: none; cursor: wait; }
+.ish-button--quiet { min-height: 2.55rem; padding: .55rem .85rem; color: var(--ish-blue-deep); background: var(--ish-blue-soft); }
+.ish-button--quiet:hover { background: #d8edf3; }
+.ish-feedback { min-width: 0; padding: .85rem 1rem; border: 1px solid transparent; border-radius: var(--ish-radius-sm); font-size: .87rem; line-height: 1.5; overflow-wrap: anywhere; }
+.ish-feedback p { margin: 0; }
+.ish-feedback p + p { margin-top: .4rem; }
+.ish-feedback-title { display: block; margin-bottom: .2rem; }
+.ish-feedback--error { color: #92333d; border-color: #f3d1d4; background: var(--ish-danger-bg); }
+.ish-feedback--success { color: #176755; border-color: #ccece1; background: var(--ish-success-bg); }
+.ish-feedback--info, .ish-feedback--loading { color: #355b6a; border-color: #cde6ee; background: #f0f9fc; }
+.ish-error-message { padding: .85rem 1rem; border: 1px solid #f3d1d4; border-radius: var(--ish-radius-sm); color: #92333d; background: var(--ish-danger-bg); font-size: .87rem; line-height: 1.5; }
+.ish-auth-form .ish-feedback { margin-bottom: .1rem; }
+.ish-signup-existing { margin: -0.55rem 0 1.15rem; color: var(--ish-muted); font-size: .86rem; }
+.ish-signup-existing a { margin-left: .2rem; font-weight: 700; }
+.ish-signup-terms { margin: -.15rem 0 0; color: var(--ish-muted); text-align: center; font-size: .75rem; line-height: 1.55; }
+.ish-signup-terms a { font-weight: 600; }
+.ish-or-divider { margin: 1.4rem 0 1rem; display: flex; align-items: center; gap: .75rem; color: #97a2a7; font-size: .68rem; font-weight: 800; letter-spacing: .12em; }
+.ish-or-divider::before, .ish-or-divider::after { content: ""; height: 1px; flex: 1; background: #e7ecec; }
+.ish-google-identity { position: relative; width: 100%; min-width: 0; min-height: 44px; }
+.ish-google-identity-button { width: 100%; min-height: 44px; display: grid; place-items: center; }
+.ish-google-identity-button iframe { max-width: 100%; }
+.ish-google-identity-button.is-disabled { opacity: .65; }
+.ish-google-identity-blocker { position: absolute; inset: 0; cursor: wait; }
+.ish-google-identity-error { margin: .5rem 0 0; color: #a13b31; font-size: .78rem; line-height: 1.45; }
+.ish-google-identity-retry { margin-top: .35rem; padding: .35rem .55rem; border: 1px solid var(--ish-border); border-radius: 6px; color: var(--ish-blue); background: #fff; font-size: .75rem; cursor: pointer; }
+.ish-login-google { margin: 0 0 .3rem; }
+.ish-create-link, .ish-auth-bottom-link { margin: 1.3rem 0 0; color: var(--ish-muted); text-align: center; font-size: .85rem; }
+.ish-create-link a, .ish-auth-bottom-link a { margin-left: .2rem; font-weight: 700; text-decoration: none; }
+.ish-auth-success { display: grid; gap: 1rem; }
+.ish-signup-success { display: grid; gap: 1.15rem; }
+.ish-signup-success .ish-feedback { margin: 0; }
+.ish-signup-return, .ish-auth-return { width: 100%; }
+.ish-auth-progress { color: var(--ish-muted); }
+.ish-state-card { display: grid; justify-items: start; gap: 1rem; }
+.ish-state-card h2 { margin: 0; font: 800 1.55rem/1.2 var(--ish-font-display), sans-serif; }
+.ish-state-card > p { margin: 0; color: var(--ish-muted); }
+.ish-state-card .ish-button { min-width: 140px; width: auto; }
+.ish-loading-indicator { width: 2rem; height: 2rem; border: 3px solid #d4eaf0; border-top-color: var(--ish-blue); border-radius: 50%; animation: ish-spin .8s linear infinite; }
+@keyframes ish-spin { to { transform: rotate(360deg); } }
+
+/* Dashboard */
+.ish-dashboard { min-height: 100vh; background: #f5f3ed; }
+.ish-dashboard-header { min-height: 76px; padding: .75rem clamp(1rem, 5vw, 4.5rem); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; border-bottom: 1px solid #e7e8e2; background: #fff; }
+.ish-dashboard-brand { display: inline-flex; align-items: center; gap: .65rem; color: var(--ish-ink); font: 800 1.2rem var(--ish-font-display), sans-serif; letter-spacing: -.05em; text-decoration: none; }
+.ish-dashboard-brand > span:last-child > span { color: var(--ish-blue); }
+.ish-dashboard-brand-mark { width: 2rem; height: 2rem; display: grid; place-items: center; border-radius: .65rem; color: #fff; background: var(--ish-blue); font: 800 1.2rem var(--ish-font-display), sans-serif; }
+.ish-dashboard-nav { margin-right: auto; margin-left: clamp(1rem, 4vw, 3rem); }
+.ish-dashboard-nav a { padding: .7rem .85rem; border-radius: .65rem; color: var(--ish-blue-deep); background: #e9f5f8; font-size: .9rem; font-weight: 700; text-decoration: none; }
+.ish-dashboard-account { display: flex; align-items: center; gap: .75rem; }
+.ish-dashboard-account-name { max-width: 170px; overflow: hidden; color: #425a67; font-size: .87rem; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.ish-dashboard-avatar, .ish-dashboard-profile-avatar { width: 2.35rem; height: 2.35rem; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; color: #176b62; background: #d9f3e9; font-weight: 800; }
+.ish-dashboard-content { width: min(100% - 3rem, 1120px); margin: 0 auto; padding: clamp(2rem, 5vw, 4rem) 0 1.5rem; }
+.ish-dashboard-welcome { position: relative; min-height: 220px; padding: clamp(1.75rem, 4vw, 3.2rem); overflow: hidden; border-radius: var(--ish-radius-card); color: #fff; background: var(--ish-blue); }
+.ish-eyebrow { display: block; color: var(--ish-teal-deep); font-size: .68rem; font-weight: 800; letter-spacing: .14em; }
+.ish-dashboard-welcome .ish-eyebrow { color: #c4f3e7; }
+.ish-dashboard-welcome h1 { position: relative; z-index: 1; max-width: 700px; margin: .75rem 0 .55rem; font: 800 clamp(1.9rem, 4vw, 2.8rem)/1.15 var(--ish-font-display), sans-serif; letter-spacing: -.05em; }
+.ish-dashboard-welcome p { position: relative; z-index: 1; max-width: 560px; margin: 0; color: rgba(255,255,255,.84); line-height: 1.65; }
+.ish-dashboard-welcome-art { position: absolute; right: 2rem; bottom: -8rem; width: 260px; aspect-ratio: 1; border-radius: 50%; background: var(--ish-teal); }
+.ish-dashboard-welcome-art i { position: absolute; inset: 18%; border-radius: 50%; background: var(--ish-yellow); }
+.ish-dashboard-welcome-art b { position: absolute; inset: 36%; border-radius: 50%; background: var(--ish-blue); }
+.ish-dashboard-grid { margin-top: 1.5rem; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: 1.5rem; }
+.ish-dashboard-card { min-width: 0; padding: clamp(1.4rem, 3vw, 2rem); border: 1px solid #e8e9e2; border-radius: var(--ish-radius-lg); background: #fff; box-shadow: var(--ish-shadow-soft); }
+.ish-dashboard-icon { width: 2.5rem; height: 2.5rem; margin-bottom: 1.5rem; display: grid; place-items: center; border-radius: .8rem; color: #8c6d05; background: #fff4c8; font-size: 1.2rem; }
+.ish-dashboard-card h2 { margin: .45rem 0 .6rem; color: var(--ish-ink); font: 800 1.25rem/1.3 var(--ish-font-display), sans-serif; }
+.ish-dashboard-card p { max-width: 440px; margin: 0; color: var(--ish-muted); font-size: .92rem; line-height: 1.65; }
+.ish-coming-soon { margin-top: 1.4rem; padding: .45rem .7rem; display: inline-block; border-radius: 2rem; color: #637781; background: #f0f4f4; font-size: .75rem; font-weight: 700; }
+.ish-dashboard-card-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.2rem; }
+.ish-dashboard-profile-avatar { width: 2.8rem; height: 2.8rem; font-size: 1.05rem; }
+.ish-dashboard-profile dl { margin: 0; }
+.ish-dashboard-profile dl > div { padding: .85rem 0; display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid #edf0ed; }
+.ish-dashboard-profile dt { color: var(--ish-muted); font-size: .83rem; }
+.ish-dashboard-profile dd { max-width: 62%; margin: 0; overflow-wrap: anywhere; color: #304a58; text-align: right; font-size: .85rem; font-weight: 700; }
+.ish-status-badge { padding: .33rem .55rem; display: inline-block; border-radius: 2rem; color: #8b6b09; background: #fff4cd; font-size: .72rem; white-space: nowrap; }
+.ish-status-badge.is-verified { color: #16745f; background: #e4f7ef; }
+.ish-dashboard-footer { padding: 2rem 0 .75rem; color: #8b989b; text-align: center; font-size: .78rem; }
+
+@media (max-width: 900px) {
+  .ish-auth-layout, .ish-signup-layout { grid-template-columns: minmax(280px, 38%) minmax(0,1fr); }
+  .ish-auth-brand { padding: 2.5rem; }
+  .ish-auth-main { padding: 2rem; }
+  .ish-brand-message h1 { font-size: clamp(1.55rem, 3.2vw, 2.6rem); }
+  .ish-dashboard-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  .ish-auth-layout, .ish-signup-layout { min-height: 100vh; display: flex; flex-direction: column; }
+  .ish-auth-brand { min-height: auto; height: auto; padding: 1.35rem 1.4rem 1.55rem; }
+  .ish-brand-logo { font-size: 1.45rem; }
+  .ish-brand-message { margin: 1.55rem 0 4.25rem; padding: 0; max-width: 32rem; }
+  .ish-brand-message h1 { margin-bottom: .55rem; font-size: clamp(1.75rem, 6vw, 2.35rem); }
+  .ish-brand-message p { max-width: 29rem; font-size: .9rem; line-height: 1.45; }
+  .ish-brand-message p br { display: none; }
+  .ish-brand-decoration { right: -2rem; bottom: -2rem; width: 120px; opacity: .9; }
+  .ish-auth-main { min-height: auto; flex: 1; padding: 1.25rem 1rem 2rem; align-items: flex-start; }
+  .ish-auth-card, .ish-signup-card { width: min(100%, 510px); margin: 0 auto; padding: clamp(1.35rem, 5vw, 2rem); border-radius: 1.2rem; }
+  .ish-dashboard-header { min-height: 66px; padding: .65rem 1rem; gap: .65rem; }
+  .ish-dashboard-nav { margin-left: .4rem; }
+  .ish-dashboard-account { gap: .45rem; }
+  .ish-dashboard-account-name { display: none; }
+  .ish-dashboard-content { width: min(100% - 2rem, 650px); padding-top: 1.25rem; }
+  .ish-dashboard-welcome { min-height: 190px; }
+  .ish-dashboard-welcome-art { right: -3rem; width: 190px; }
+  .ish-dashboard-grid { grid-template-columns: 1fr; gap: 1rem; }
+}
+@media (max-width: 390px) {
+  .ish-auth-brand { padding-right: 1rem; padding-left: 1rem; }
+  .ish-auth-main { padding-right: .7rem; padding-left: .7rem; }
+  .ish-card-heading h2 { font-size: 1.55rem; }
+  .ish-dashboard-brand { gap: .4rem; font-size: 1rem; }
+  .ish-dashboard-brand-mark { width: 1.8rem; height: 1.8rem; }
+  .ish-dashboard-header { gap: .45rem; }
+  .ish-dashboard-nav a { padding: .6rem; font-size: .8rem; }
+  .ish-button--quiet { padding: .5rem .65rem; font-size: .8rem; }
+  .ish-dashboard-content { width: min(100% - 1.25rem, 650px); }
+  .ish-dashboard-profile dl > div { align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }

@@ -1,0 +1,6 @@
+{
+  "name": "ISHARA AI",
+  "description": "Pakistan Sign Language communication platform — accessible camera, upload, history, and administration interface.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

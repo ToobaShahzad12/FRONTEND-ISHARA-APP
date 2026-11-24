@@ -1,0 +1,229 @@
+@layer reset, tokens, base, components, pages, utilities;
+
+@layer tokens {
+  :root {
+    color-scheme: light;
+
+    /* =========================
+       ISHARA AI Original Brand Palette
+       Warm Cream Canvas · Ocean Blue · Mint Teal · Sunshine Yellow
+       ========================= */
+    --ish-blue: #0b84b4;
+    --ish-blue-hover: #076b94;
+    --ish-blue-pressed: #055576;
+    --ish-blue-deep: #064a66;
+    --ish-blue-soft: #e7f4f8;
+    --ish-blue-selected: #dff0f6;
+
+    --ish-teal: #2fc7a3;
+    --ish-teal-deep: #108f78;
+    --ish-teal-soft: #e4f7ef;
+
+    --ish-yellow: #ffd84d;
+    --ish-yellow-bright: #ffd619;
+    --ish-yellow-soft: #fff6cf;
+    --ish-yellow-ink: #433505;
+
+    --ish-beige: #f2ebdd;
+    --ish-beige-band: #eae1cf;
+    --ish-ivory: #faf8f4;
+    --ish-white: #ffffff;
+    --ish-sunken: #f3f6f7;
+
+    --ish-ink: #193445;
+    --ish-ink-secondary: #344c59;
+    --ish-muted: #52646e;
+    --ish-disabled: #8a99a1;
+    --ish-border: #dce4e6;
+    --ish-border-warm: #e6dfd1;
+
+    /* Semantic Status Colors (WCAG AA compliant on light surfaces) */
+    --ds-success-fg: #126b58;
+    --ds-success-bg: #e6f7f0;
+    --ds-success-border: #b3e2d1;
+
+    --ds-warning-fg: #765604;
+    --ds-warning-bg: #fff4c8;
+    --ds-warning-border: #ecd37a;
+
+    --ds-danger-fg: #92333d;
+    --ds-danger-solid: #bd3e4b;
+    --ds-danger-hover: #a1313d;
+    --ds-danger-active: #862731;
+    --ds-danger-bg: #fff0f0;
+    --ds-danger-border: #f2cdd0;
+
+    --ds-info-fg: #076b94;
+    --ds-info-bg: #e7f4f8;
+    --ds-info-border: #bae0ec;
+
+    /* =========================
+       Semantic Tokens — Light Editorial SaaS Theme
+       ========================= */
+    --ds-bg-canvas: var(--ish-beige);
+    --ds-bg-band: var(--ish-beige-band);
+    --ds-bg-surface: var(--ish-white);
+    --ds-bg-ivory: var(--ish-ivory);
+    --ds-bg-sunken: var(--ish-sunken);
+
+    --ds-bg-brand: var(--ish-blue);
+    --ds-bg-brand-hover: var(--ish-blue-hover);
+    --ds-bg-brand-pressed: var(--ish-blue-pressed);
+    --ds-bg-brand-deep: var(--ish-blue-deep);
+    --ds-bg-panel-dark: #096f98;
+    --ds-bg-selected: var(--ish-blue-soft);
+    --ds-bg-disabled: #eef2f3;
+    --ds-bg-scrim: rgba(25, 52, 69, 0.45);
+
+    --ds-text-primary: var(--ish-ink);
+    --ds-text-secondary: var(--ish-ink-secondary);
+    --ds-text-muted: var(--ish-muted);
+    --ds-text-disabled: var(--ish-disabled);
+
+    --ds-text-on-brand: #ffffff;
+    --ds-text-on-brand-secondary: rgba(255, 255, 255, 0.9);
+    --ds-text-on-brand-accent: #c4f3e7;
+    --ds-text-on-brand-terra: #ffd84d;
+
+    --ds-text-accent: var(--ish-blue-hover);
+    --ds-graphic-accent: var(--ish-teal);
+    --ds-text-gold: var(--ish-yellow-ink);
+    --ds-graphic-gold: var(--ish-yellow);
+    --ds-text-link: var(--ish-blue-hover);
+    --ds-text-link-hover: var(--ish-blue-pressed);
+    --ds-text-on-accent: #ffffff;
+
+    --ds-border-divider: #e7e3db;
+    --ds-border-subtle: var(--ish-border);
+    --ds-border-control: #c7d5d9;
+    --ds-border-strong: var(--ish-blue);
+    --ds-border-brand: var(--ish-blue);
+    --ds-border-gold: rgba(255, 216, 77, 0.72);
+
+    --ds-accent-gold: var(--ish-yellow);
+    --ds-accent-gold-hover: #f5ca2f;
+    --ds-accent-gold-active: #e2b81f;
+
+    --ds-focus-ring: var(--ish-blue);
+    --ds-focus-ring-dark: #ffd84d;
+
+    --ds-status-success: var(--ds-success-fg);
+    --ds-status-success-bg: var(--ds-success-bg);
+    --ds-status-warning: var(--ds-warning-fg);
+    --ds-status-warning-solid: #d99b06;
+    --ds-status-warning-bg: var(--ds-warning-bg);
+    --ds-status-error: var(--ds-danger-fg);
+    --ds-status-error-solid: var(--ds-danger-solid);
+    --ds-status-error-hover: var(--ds-danger-hover);
+    --ds-status-error-active: var(--ds-danger-active);
+    --ds-status-error-bg: var(--ds-danger-bg);
+    --ds-status-info: var(--ds-info-fg);
+    --ds-status-info-bg: var(--ds-info-bg);
+
+    /* =========================
+       Typography (Manrope Display + DM Sans UI)
+       ========================= */
+    --ds-font-display: "Manrope", "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --ds-font-ui: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --ds-font-serif: "Manrope", "DM Sans", system-ui, sans-serif;
+    --ds-font-urdu: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Noto Naskh Arabic", serif;
+    --ds-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+    /* =========================
+       Spacing (4px base -> rem)
+       ========================= */
+    --ds-space-0: 0;
+    --ds-space-1: 0.25rem;
+    --ds-space-2: 0.5rem;
+    --ds-space-3: 0.75rem;
+    --ds-space-4: 1rem;
+    --ds-space-5: 1.25rem;
+    --ds-space-6: 1.5rem;
+    --ds-space-8: 2rem;
+    --ds-space-10: 2.5rem;
+    --ds-space-12: 3rem;
+    --ds-space-16: 4rem;
+    --ds-space-20: 5rem;
+    --ds-space-24: 6rem;
+    --ds-space-32: 8rem;
+
+    /* =========================
+       Containers & Radii
+       ========================= */
+    --ds-container-narrow: 30rem;
+    --ds-container-reading: 45rem;
+    --ds-container-app: 78rem;
+    --ds-container-wide: 90rem;
+    --ds-container-admin: 85rem;
+
+    --ds-radius-xs: 6px;
+    --ds-radius-sm: 10px;
+    --ds-radius-md: 14px;
+    --ds-radius-lg: 20px;
+    --ds-radius-xl: 26px;
+    --ds-radius-full: 999px;
+
+    /* =========================
+       ISHARA Original Gradients + Smart-Stock Depth & Glass
+       ========================= */
+    --ish-brand-gradient: linear-gradient(135deg, #0b84b4 0%, #076b94 100%);
+    --ish-brand-gradient-ocean: linear-gradient(135deg, #0b84b4 0%, #108f78 100%);
+    --ish-brand-gradient-hero: linear-gradient(145deg, #0b84b4 0%, #076b94 64%, #0b7b86 100%);
+    --ish-brand-gradient-soft: linear-gradient(135deg, rgba(11, 132, 180, 0.11) 0%, rgba(47, 199, 163, 0.12) 100%);
+    --ish-yellow-gradient-soft: linear-gradient(135deg, #fff6cf 0%, #ffe680 100%);
+
+    --ds-shadow-color: 25, 52, 69;
+    --ds-shadow-1: 0 2px 8px rgba(var(--ds-shadow-color), 0.05), 0 1px 2px rgba(var(--ds-shadow-color), 0.04);
+    --ds-shadow-2: 0 10px 28px -6px rgba(var(--ds-shadow-color), 0.09), 0 2px 8px rgba(11, 132, 180, 0.05);
+    --ds-shadow-3: 0 20px 50px -10px rgba(var(--ds-shadow-color), 0.14), 0 4px 16px rgba(11, 132, 180, 0.08);
+    --ds-shadow-4: 0 26px 68px -12px rgba(var(--ds-shadow-color), 0.22);
+    --ds-shadow-card-hover: 0 18px 40px -8px rgba(11, 132, 180, 0.16), 0 6px 14px -4px rgba(var(--ds-shadow-color), 0.08);
+    --ds-shadow-glow-brand: 0 10px 26px -4px rgba(11, 132, 180, 0.32), 0 2px 6px rgba(7, 107, 148, 0.18);
+    --ds-shadow-glow-teal: 0 10px 26px -4px rgba(47, 199, 163, 0.26);
+
+    --ds-surface-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    --ds-dark-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    --ds-glass-header: rgba(250, 248, 244, 0.86);
+    --ds-glass-brand: rgba(11, 132, 180, 0.92);
+    --ds-glass-canvas: rgba(250, 248, 244, 0.88);
+    --ds-glass-surface: rgba(255, 255, 255, 0.96);
+
+    --ds-hero-mesh:
+      radial-gradient(ellipse 68% 58% at 86% 18%, rgba(47, 199, 163, 0.24), transparent 62%),
+      radial-gradient(ellipse 52% 48% at 12% 84%, rgba(255, 216, 77, 0.16), transparent 64%);
+    --ds-surface-sheen: linear-gradient(180deg, #ffffff 0%, #fafcfd 100%);
+
+    /* =========================
+       Z-Index Scale
+       ========================= */
+    --ds-z-base: 0;
+    --ds-z-sticky: 100;
+    --ds-z-drawer: 300;
+    --ds-z-modal: 400;
+    --ds-z-toast: 500;
+    --ds-z-tooltip: 600;
+
+    /* =========================
+       Motion Tokens
+       ========================= */
+    --ds-dur-instant: 80ms;
+    --ds-dur-fast: 180ms;
+    --ds-dur-base: 280ms;
+    --ds-dur-slow: 400ms;
+    --ds-dur-hero: 560ms;
+    --ds-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --ds-ease-enter: cubic-bezier(0.22, 1, 0.36, 1);
+    --ds-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* =========================
+       Legacy Compatibility Aliases (--ish-*)
+       ========================= */
+    --ish-font-body: var(--ds-font-ui);
+    --ish-font-display: var(--ds-font-display);
+    --ish-ink: var(--ds-text-primary);
+    --ish-danger: var(--ds-status-error);
+    --ish-danger-bg: var(--ds-status-error-bg);
+    --ish-success: var(--ds-status-success);
+    --ish-success-bg: var(--ds-status-success-bg);
+  }
+}
